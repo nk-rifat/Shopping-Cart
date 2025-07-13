@@ -1,9 +1,10 @@
 import "./App.css";
+import AnnouncementBar from "./Components/Announcement/AnnouncementBar";
 
 function App() {
   return (
     <>
-      <h1 className="text-red-500">Shopping Cart</h1>
+      <AnnouncementBar />
     </>
   );
 }
