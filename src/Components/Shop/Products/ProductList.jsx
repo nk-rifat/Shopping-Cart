@@ -1,7 +1,9 @@
-import ProductCart from "./ProductCart";
-import products from "../../../data/initialProducts";
+import { useContext } from "react";
+import ProductCard from "./ProductCard";
+import { ProductContext } from "../../../Context";
 
 const ProductList = () => {
+  const { products } = useContext(ProductContext);
   return (
     <div className="lg:col-span-2">
       <div className="flex items-center justify-between mb-6">
@@ -19,7 +21,7 @@ const ProductList = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {products.map((product) => (
-          <ProductCart key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>

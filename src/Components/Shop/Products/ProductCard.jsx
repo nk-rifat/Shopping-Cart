@@ -1,6 +1,6 @@
 import Rating from "./Rating";
 
-const ProductCart = ({ product }) => {
+const ProductCard = ({ product }) => {
   return (
     <div className="bg-gray-100 rounded-lg overflow-hidden transition-transform hover:scale-[1.02] duration-300">
       <div className="h-48 bg-gray-200 flex items-center justify-center">
@@ -27,4 +27,4 @@ const ProductCart = ({ product }) => {
   );
 };
 
-export default ProductCart;
+export default ProductCard;

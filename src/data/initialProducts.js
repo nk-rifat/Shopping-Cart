@@ -8,7 +8,7 @@ import VerticalStriped from "../assets/img/image 9-1.png";
 import Courage from "../assets/img/image 9-2.png";
 import Shorts from "../assets/img/image 9.png";
 
-const products = [
+const productList = [
   {
     id: 1,
     title: "Gradient Graphic T-shirt",
@@ -16,6 +16,9 @@ const products = [
     price: 145,
     rating: 4,
     stock: 12,
+    size: "M",
+    color: "Blue",
+    date: "2025-07-01",
   },
   {
     id: 2,
@@ -24,6 +27,9 @@ const products = [
     price: 180,
     rating: 1,
     stock: 8,
+    size: "L",
+    color: "White",
+    date: "2025-07-10",
   },
   {
     id: 3,
@@ -32,6 +38,9 @@ const products = [
     price: 120,
     rating: 3,
     stock: 5,
+    size: "S",
+    color: "Black",
+    date: "2025-06-28",
   },
   {
     id: 4,
@@ -40,6 +49,9 @@ const products = [
     price: 240,
     rating: 4,
     stock: 9,
+    size: "XL",
+    color: "Denim Blue",
+    date: "2025-07-05",
   },
   {
     id: 5,
@@ -48,6 +60,9 @@ const products = [
     price: 180,
     rating: 4,
     stock: 8,
+    size: "L",
+    color: "Red",
+    date: "2025-07-03",
   },
   {
     id: 6,
@@ -56,6 +71,9 @@ const products = [
     price: 130,
     rating: 4,
     stock: 7,
+    size: "M",
+    color: "White & Black",
+    date: "2025-07-09",
   },
   {
     id: 7,
@@ -64,6 +82,9 @@ const products = [
     price: 212,
     rating: 4,
     stock: 6,
+    size: "XL",
+    color: "Green",
+    date: "2025-07-04",
   },
   {
     id: 8,
@@ -72,6 +93,9 @@ const products = [
     price: 145,
     rating: 4,
     stock: 10,
+    size: "S",
+    color: "Black",
+    date: "2025-07-06",
   },
   {
     id: 9,
@@ -80,7 +104,10 @@ const products = [
     price: 80,
     rating: 4,
     stock: 4,
+    size: "M",
+    color: "Beige",
+    date: "2025-07-02",
   },
 ];
 
-export default products;
+export default productList;
