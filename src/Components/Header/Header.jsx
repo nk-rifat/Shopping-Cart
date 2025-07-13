@@ -2,6 +2,7 @@ import SearchIcon from "../../Icons/SearchIcon";
 import CartIcon from "../../Icons/CartIcon";
 import ManIcon from "../../Icons/ManIcon";
 import NavItems from "./NavItems";
+import SearchBar from "../Header/SearchBar";
 const Header = () => {
   return (
     <header className="border-b border-gray-200 py-4 px-4 md:px-8">
@@ -16,11 +17,7 @@ const Header = () => {
 
         <div className="flex items-center space-x-4">
           <div className="relative hidden md:block w-64">
-            <input
-              type="text"
-              placeholder="Search for products..."
-              className="w-full bg-gray-100 rounded-full py-2 px-4 text-sm"
-            />
+            <SearchBar />
             <span className="absolute right-3 top-2">
               <SearchIcon />
             </span>
