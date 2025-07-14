@@ -1,6 +1,17 @@
+import { useContext } from "react";
+import Button from "../../Button/Button";
 import Rating from "./Rating";
+import { CartContext } from "../../../Context";
 
 const ProductCard = ({ product }) => {
+  const { cart, setCart } = useContext(CartContext);
+
+  function handleAddToCart(product) {
+    console.log(product);
+    setCart(...cart, product);
+    console.log(cart);
+  }
+
   return (
     <div className="bg-gray-100 rounded-lg overflow-hidden transition-transform hover:scale-[1.02] duration-300">
       <div className="h-48 bg-gray-200 flex items-center justify-center">
@@ -19,9 +30,9 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
         <p className="font-bold">${product.price} </p>
-        <button className="w-full mt-2 bg-red-800 py-1 text-gray-100 rounded flex items-center justify-center">
-          Remove from Cart
-        </button>
+        <Button onclick={() => handleAddToCart(product)} type="primary">
+          Add To Cart
+        </Button>
       </div>
     </div>
   );

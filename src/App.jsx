@@ -6,19 +6,22 @@ import Header from "./Components/Header/Header";
 import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import Shop from "./Components/Shop/Shop";
 import productList from "./data/initialProducts";
-import { ProductContext } from "./Context";
+import { CartContext, ProductContext } from "./Context";
 
 function App() {
   const [products, setProducts] = useState(productList);
+  const [cart, setCart] = useState([]);
 
   return (
-    <ProductContext.Provider value={{ products, setProducts }}>
-      <AnnouncementBar />
-      <Header />
-      <Shop />
-      <NewsLetter />
-      <Footer />
-    </ProductContext.Provider>
+    <CartContext.Provider value={{ cart, setCart }}>
+      <ProductContext.Provider value={{ products, setProducts }}>
+        <AnnouncementBar />
+        <Header />
+        <Shop />
+        <NewsLetter />
+        <Footer />
+      </ProductContext.Provider>
+    </CartContext.Provider>
   );
 }
 
