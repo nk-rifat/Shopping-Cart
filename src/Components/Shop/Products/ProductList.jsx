@@ -3,23 +3,13 @@ import ProductCard from "./ProductCard";
 import { ProductContext } from "../../../Context";
 
 const ProductList = () => {
-  const { products, setProducts } = useContext(ProductContext);
+  const { products, dispatch } = useContext(ProductContext);
 
   const handleSort = (e) => {
-    const value = e.target.value;
-    let sortedProducts = [...products];
-
-    if (value === "Most Popular") {
-      sortedProducts.sort((a, b) => b.rating - a.rating);
-    } else if (value === "Newest") {
-      sortedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
-    } else if (value === "Price: Low to High") {
-      sortedProducts.sort((a, b) => a.price - b.price);
-    } else if (value === "Price: High to Low") {
-      sortedProducts.sort((a, b) => b.price - a.price);
-    }
-
-    setProducts(sortedProducts);
+    dispatch({
+      type: "Sort_Products",
+      payload: { sortBy: e.target.value },
+    });
   };
   return (
     <div className="lg:col-span-2">

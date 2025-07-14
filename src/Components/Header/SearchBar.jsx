@@ -4,13 +4,13 @@ import { ProductContext } from "../../Context";
 import productList from "../../data/initialProducts";
 
 const SearchBar = () => {
-  const { setProducts } = useContext(ProductContext);
+  const { dispatch } = useContext(ProductContext);
 
   function handleSearchProduct(searchText) {
-    const result = productList.filter((product) =>
-      product.title.toLowerCase().includes(searchText.toLowerCase())
-    );
-    setProducts([...result]);
+    dispatch({
+      type: "Search_Products",
+      payload: { searchText, productList },
+    });
   }
 
   return (
