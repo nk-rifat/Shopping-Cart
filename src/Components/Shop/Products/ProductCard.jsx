@@ -1,15 +1,36 @@
 import { useContext } from "react";
 import Button from "../../Button/Button";
 import Rating from "./Rating";
-import { CartContext } from "../../../Context";
+import { CartContext, ProductContext } from "../../../Context";
 
 const ProductCard = ({ product }) => {
   const { cart, setCart } = useContext(CartContext);
+  const { products, setProducts } = useContext(ProductContext);
+
+  const inCart = cart.find((item) => item.id === product.id);
 
   function handleAddToCart(product) {
-    console.log(product);
-    setCart(...cart, product);
-    console.log(cart);
+    if (product.stock <= 0) return;
+
+    setCart([...cart, { ...product, quantity: 1 }]);
+
+    const updatedProducts = products.map((item) =>
+      item.id === product.id ? { ...item, stock: item.stock - 1 } : item
+    );
+    setProducts(updatedProducts);
+  }
+
+  function handleRemoveFromCart(product) {
+    const cartItem = cart.find((item) => item.id === product.id);
+
+    setCart(cart.filter((item) => item.id !== product.id));
+
+    const updatedProducts = products.map((item) =>
+      item.id === product.id
+        ? { ...item, stock: item.stock + (cartItem?.quantity || 1) }
+        : item
+    );
+    setProducts(updatedProducts);
   }
 
   return (
@@ -30,12 +51,22 @@ const ProductCard = ({ product }) => {
           </span>
         </div>
         <p className="font-bold">${product.price} </p>
-        <Button onclick={() => handleAddToCart(product)} type="primary">
-          Add To Cart
-        </Button>
+        {inCart ? (
+          <Button onClick={() => handleRemoveFromCart(product)} type="danger">
+            Remove From Cart
+          </Button>
+        ) : (
+          <Button
+            onClick={() => handleAddToCart(product)}
+            disabled={product.stock <= 0}
+            type={product.stock <= 0 ? "disabled" : "primary"}
+          >
+            Add To Cart
+          </Button>
+        )}
       </div>
     </div>
-  );
+  )
 };
 
 export default ProductCard;
