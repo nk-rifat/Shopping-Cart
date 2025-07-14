@@ -26,7 +26,7 @@ const productList = [
     img: Polo,
     price: 180,
     rating: 1,
-    stock: 8,
+    stock: 0,
     size: "L",
     color: "White",
     date: "2025-07-10",
