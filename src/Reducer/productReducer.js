@@ -24,21 +24,22 @@ export const productReducer = (state, action) => {
 
       return sorted;
     }
-    case "Decrease_Stock": {
-      return state.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, stock: item.stock - 1 }
-          : item
+    case "Decrease_Stock":
+      return state.map((product) =>
+        product.id === action.payload.id
+          ? { ...product, stock: product.stock - 1 }
+          : product
       );
-    }
 
-    case "Increase_Stock": {
-      return state.map((item) =>
-        item.id === action.payload.id
-          ? { ...item, stock: item.stock + action.payload.quantity }
-          : item
+    case "Increase_Stock":
+      return state.map((product) =>
+        product.id === action.payload.id
+          ? {
+              ...product,
+              stock: product.stock + (action.payload.quantity || 1),
+            }
+          : product
       );
-    }
 
     default:
       return state;

@@ -4,10 +4,10 @@ import { ProductContext } from "../../Context";
 import productList from "../../data/initialProducts";
 
 const SearchBar = () => {
-  const { productDispatch } = useContext(ProductContext);
+  const { productsDispatch } = useContext(ProductContext);
 
   function handleSearchProduct(searchText) {
-    productDispatch({
+    productsDispatch({
       type: "Search_Products",
       payload: { searchText, productList },
     });

@@ -3,10 +3,10 @@ import ProductCard from "./ProductCard";
 import { ProductContext } from "../../../Context";
 
 const ProductList = () => {
-  const { products, dispatch } = useContext(ProductContext);
+  const { products, productsDispatch } = useContext(ProductContext);
 
   const handleSort = (e) => {
-    dispatch({
+    productsDispatch({
       type: "Sort_Products",
       payload: { sortBy: e.target.value },
     });
