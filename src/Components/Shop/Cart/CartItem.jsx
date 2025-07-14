@@ -27,6 +27,38 @@ const CartItem = ({ item }) => {
     );
   };
 
+  const handleDecrease = () => {
+    if (item.quantity <= 1) return;
+
+    setCart(
+      cart.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: cartItem.quantity - 1 }
+          : cartItem
+      )
+    );
+
+    setProducts(
+      products.map((product) =>
+        product.id === item.id
+          ? { ...product, stock: product.stock + 1 }
+          : product
+      )
+    );
+  };
+
+  const handleRemove = () => {
+    setProducts(
+      products.map((product) =>
+        product.id === item.id
+          ? { ...product, stock: product.stock + item.quantity }
+          : product
+      )
+    );
+
+    setCart(cart.filter((cartItem) => cartItem.id !== item.id));
+  };
+
   return (
     <div className="flex items-start space-x-4 pb-4 border-b border-gray-200 mb-4">
       <div className="w-16 h-16 bg-gray-100 rounded flex-shrink-0 flex items-center justify-center">
@@ -40,7 +72,12 @@ const CartItem = ({ item }) => {
       <div className="flex-grow">
         <div className="flex justify-between">
           <h3 className="font-medium">{item.title}</h3>
-          <button className="text-red-500 text-sm font-bold">×</button>
+          <button
+            onClick={handleRemove}
+            className="text-red-500 text-sm font-bold"
+          >
+            ×
+          </button>
         </div>
 
         <p className="text-sm text-gray-500">Stock Left: {productStock}</p>
@@ -52,6 +89,7 @@ const CartItem = ({ item }) => {
 
           <div className="flex items-center space-x-2">
             <button
+              onClick={handleDecrease}
               disabled={item.quantity <= 1}
               className="w-6 h-6 bg-gray-200 rounded flex items-center justify-center"
             >
