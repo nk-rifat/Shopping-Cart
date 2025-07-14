@@ -1,4 +1,4 @@
-import { useReducer, useState } from "react";
+import { useReducer } from "react";
 import "./App.css";
 import AnnouncementBar from "./Components/Announcement/AnnouncementBar";
 import Footer from "./Components/Footer/Footer";
@@ -7,15 +7,16 @@ import NewsLetter from "./Components/NewsLetter/NewsLetter";
 import Shop from "./Components/Shop/Shop";
 import productList from "./data/initialProducts";
 import { CartContext, ProductContext } from "./Context";
-import { productReducer } from "./Reducer/reducer";
+import { productReducer } from "./Reducer/productReducer";
+import { cartReducer } from "./Reducer/cartReducer";
 
 function App() {
-  const [products, dispatch] = useReducer(productReducer, productList);
-  const [cart, setCart] = useState([]);
+  const [products, productsDispatch] = useReducer(productReducer, productList);
+  const [cart, cartDispatch] = useReducer(cartReducer, []);
 
   return (
-    <CartContext.Provider value={{ cart, setCart }}>
-      <ProductContext.Provider value={{ products, dispatch }}>
+    <CartContext.Provider value={{ cart, cartDispatch }}>
+      <ProductContext.Provider value={{ products, productsDispatch }}>
         <AnnouncementBar />
         <Header />
         <Shop />

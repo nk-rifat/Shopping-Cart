@@ -4,33 +4,28 @@ import Rating from "./Rating";
 import { CartContext, ProductContext } from "../../../Context";
 
 const ProductCard = ({ product }) => {
-  const { cart, setCart } = useContext(CartContext);
-  const { products, setProducts } = useContext(ProductContext);
+  const { cart, cartDispatch } = useContext(CartContext);
+  const {productsDispatch } = useContext(ProductContext);
 
   const inCart = cart.find((item) => item.id === product.id);
 
   function handleAddToCart(product) {
     if (product.stock <= 0) return;
 
-    setCart([...cart, { ...product, quantity: 1 }]);
+    cartDispatch({ type: "Add_To_Cart", payload: product });
 
-    const updatedProducts = products.map((item) =>
-      item.id === product.id ? { ...item, stock: item.stock - 1 } : item
-    );
-    setProducts(updatedProducts);
+    productsDispatch({ type: "Decrease_Stock", payload: { id: product.id } });
   }
 
   function handleRemoveFromCart(product) {
     const cartItem = cart.find((item) => item.id === product.id);
 
-    setCart(cart.filter((item) => item.id !== product.id));
+    cartDispatch({ type: "Remove_From_Cart", payload: product });
 
-    const updatedProducts = products.map((item) =>
-      item.id === product.id
-        ? { ...item, stock: item.stock + (cartItem?.quantity || 1) }
-        : item
-    );
-    setProducts(updatedProducts);
+    productsDispatch({
+      type: "Increase_Stock",
+      payload: { id: product.id, quantity: cartItem?.quantity || 1 },
+    });
   }
 
   return (
@@ -66,7 +61,7 @@ const ProductCard = ({ product }) => {
         )}
       </div>
     </div>
-  )
+  );
 };
 
 export default ProductCard;
