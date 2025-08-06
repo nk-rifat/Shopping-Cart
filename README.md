@@ -1,12 +1,95 @@
-# React + Vite
+# React Cart & Product Management
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fully functional shopping cart interface built with React (Vite) and Tailwind CSS v4, using Context API and useReducer for global state management.
 
-Currently, two official plugins are available:
+# Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Live Site (https://shopping-cart91.netlify.app/)  
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+# Features
+
+```md
+1. React + Vite setup
+2. Tailwind CSS v4 styling
+3. Dummy product listing from local array
+4. Dynamic "Add to Cart" / "Remove from Cart" buttons
+5. Stock management logic with real-time updates
+6. Cart quantity control (+ / - buttons)
+7. Auto subtotal, discount (20%), delivery fee & total calculation
+8. Cart item deletion with quantity restore
+9. Product sorting: Popularity, Newest, Price
+10. Live product search by title
+11. Context API + useReducer based global state management
+
+```
+
+
+# Tech Stack
+
+React (Vite)
+JavaScript (ES6+)
+Tailwind CSS v4
+Context API
+useReducer
+
+
+## 📁 Project Structure
+```md
+
+src/
+├── assets/
+|
+├── components/
+|   |
+│   ├── Announcement/
+│   │   └── AnnouncementBar.jsx
+|   |
+│   ├── Button/
+│   │   └── Button.jsx
+|   |
+│   |── Footer/
+|   |   └── Footer.jsx
+|   |
+|   |──Header /
+|   |  |── Header.jsx
+|   |  |── NavItem.jsx
+|   |  └── SearchBar.jsx
+|   |
+|   |── NewsLetter /
+|   |   └── NewsLetter.jsx
+|   |
+|   └── Shop /
+|       |
+|       |── Cart
+|       |   |── Cart.jsx
+|       |   |── CartItem.jsx
+|       |   └── OrderSummary.jsx
+|       |
+|       |── Product
+|       |   |──ProductCart.jsx
+|       |   |── ProductList.jsx
+|       |   └── Rating.jsx
+|       |
+|       └── Shop.jsx
+│     
+|── Context
+|   └── index.js
+|
+├── Data/
+│   └── initialProducts.js
+|  
+├── Icons/
+│   ├── ArrowIcon.jsx
+│   ├── CartIcon.jsx
+|   |── ManIcon.jsx
+│   └── SearchIcon.jsx
+|
+|── Reducer
+|   |── cartReducer.js
+|   └── productReducer.js
+|
+├── App.jsx
+├── main.jsx
+└── index.css
+```
